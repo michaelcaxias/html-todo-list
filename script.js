@@ -43,6 +43,9 @@ taskList.addEventListener('dblclick', completeTask);
 
 /* -----Requisito 10----- */
 function clear() {
-  header.removeChild(taskList);
+  const task = document.querySelectorAll('li');
+  for (let index = 0; index < task.length; index += 1) {
+    taskList.removeChild(task[index]);
+  }
 }
 clearButton.addEventListener('click', clear);
