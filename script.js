@@ -30,10 +30,19 @@ function colorTask(clickedItem) {
 
 taskList.addEventListener('click', colorTask);
 
+/* -----Requisito 9----- */
+function completeTask(clickedItem) {
+  const completedTask = clickedItem.target;
+  if (completedTask.classList.contains('completed')) {
+    completedTask.classList.remove('completed');
+  } else {
+    completedTask.classList.add('completed');
+  }
+}
+taskList.addEventListener('dblclick', completeTask);
+
 /* -----Requisito 10----- */
 function clear() {
   header.removeChild(taskList);
-  const createOl = document.createElement('ol');
-  createOl.id = 'lista-tarefas';
 }
 clearButton.addEventListener('click', clear);
