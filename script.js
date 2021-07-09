@@ -1,21 +1,29 @@
-const input = document.querySelector('#texto-tarefa');
-const addButton = document.querySelector('#criar-tarefa');
-const taskList = document.querySelector('#lista-tarefas');
-const task = document.querySelector('.task');
+let input = document.querySelector('#texto-tarefa');
+let addButton = document.querySelector('#criar-tarefa');
+let taskList = document.querySelector('#lista-tarefas');
+let task = document.getElementsByTagName('li');
+let currentTask = document.getElementsByClassName('selected');
 
 /* -----Requisito 5 e 6----- */
 function createTask() {
   let listItem = document.createElement('li');
-  listItem.className = 'task';
   listItem.innerHTML = input.value
   taskList.appendChild(listItem);
   input.value = '';
 }
 
 addButton.addEventListener('click', createTask)
-/* -----Requisito 7----- */
+/* -----Requisito 7 e 8----- */
 function colorTask(clickedItem) {
-  clickedItem.target.setAttribute('style', 'background-color: rgb(128, 128, 128)')
+  const selectedTask = clickedItem.target;
+  if (selectedTask !== currentTask) {
+    for (let index = 0; index < task.length; index++) {
+      task[index].classList.remove('selected')
+    }
+    selectedTask.classList.add('selected');
+  }
+  currentTask = selectedTask
 }
 
 taskList.addEventListener('click', colorTask)
+
