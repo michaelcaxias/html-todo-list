@@ -1,10 +1,10 @@
 const input = document.querySelector('#texto-tarefa');
 const addButton = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
-const task = document.getElementsByTagName('li');
+let task = document.getElementsByTagName('li');
 let currentTask = document.getElementsByClassName('selected');
 const clearButton = document.querySelector('#apaga-tudo');
-const header = document.querySelector('header');
+const completedButton = document.querySelector('#remover-finalizados');
 
 /* -----Requisito 5 e 6----- */
 function createTask() {
@@ -43,9 +43,20 @@ taskList.addEventListener('dblclick', completeTask);
 
 /* -----Requisito 10----- */
 function clear() {
-  const task = document.querySelectorAll('li');
+  task = document.querySelectorAll('li');
   for (let index = 0; index < task.length; index += 1) {
     taskList.removeChild(task[index]);
   }
 }
 clearButton.addEventListener('click', clear);
+
+/* -----Requisito 11----- */
+function clearCompleted() {
+  task = document.querySelectorAll('li');
+  for (let index = 0; index < task.length; index += 1) {
+    if (task[index].classList.contains('completed')) {
+      taskList.removeChild(task[index]);
+    }
+  }
+}
+completedButton.addEventListener('click', clearCompleted);
