@@ -1,31 +1,33 @@
 const input = document.querySelector('#texto-tarefa');
 const addButton = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
-let task = document.getElementsByTagName('li');
-let currentTask = document.getElementsByClassName('selected');
 const clearButton = document.querySelector('#apaga-tudo');
 const completedButton = document.querySelector('#remover-finalizados');
 
 /* -----Requisito 5 e 6----- */
 function createTask() {
-  const listItem = document.createElement('li');
-  listItem.innerHTML = input.value;
-  taskList.appendChild(listItem);
-  input.value = '';
+  if (input.value !== '') {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = input.value;
+    taskList.appendChild(listItem);
+    input.value = '';
+  }
 }
 
 addButton.addEventListener('click', createTask);
 
 /* -----Requisito 7 e 8----- */
 function colorTask(clickedItem) {
+  const currentTask = document.querySelector('.selected');
   const selectedTask = clickedItem.target;
+  const task = document.querySelectorAll('li');
   if (selectedTask !== currentTask) {
     for (let index = 0; index < task.length; index += 1) {
       task[index].classList.remove('selected');
     }
     selectedTask.classList.add('selected');
   }
-  currentTask = selectedTask;
+  taskList.removeAttribute('class');
 }
 
 taskList.addEventListener('click', colorTask);
@@ -38,12 +40,13 @@ function completeTask(clickedItem) {
   } else {
     completedTask.classList.add('completed');
   }
+  taskList.removeAttribute('class');
 }
 taskList.addEventListener('dblclick', completeTask);
 
 /* -----Requisito 10----- */
 function clear() {
-  task = document.querySelectorAll('li');
+  const task = document.querySelectorAll('li');
   for (let index = 0; index < task.length; index += 1) {
     taskList.removeChild(task[index]);
   }
@@ -52,7 +55,7 @@ clearButton.addEventListener('click', clear);
 
 /* -----Requisito 11----- */
 function clearCompleted() {
-  task = document.querySelectorAll('li');
+  const task = document.querySelectorAll('li');
   for (let index = 0; index < task.length; index += 1) {
     if (task[index].classList.contains('completed')) {
       taskList.removeChild(task[index]);
@@ -60,3 +63,5 @@ function clearCompleted() {
   }
 }
 completedButton.addEventListener('click', clearCompleted);
+
+/* -----Requisito 12----- */
