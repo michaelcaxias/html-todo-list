@@ -73,7 +73,7 @@ function saveTasks() {
 saveButton.addEventListener('click', saveTasks);
 
 function recoverSavedTasks() {
-  taskList.innerHTML = localStorage.getItem('tasks'); 
+  taskList.innerHTML = localStorage.getItem('tasks');
 }
 
 window.onload = function () {

@@ -99,11 +99,10 @@ li:hover {
 }
 
 .selected {
-  background-color: rgb(128 , 128 , 128);
+  background: grey;
   border: 1px solid blue;
 }
 
 .completed {
   text-decoration: line-through;
-  color: #f13838;
 }
