@@ -2,6 +2,7 @@ const input = document.querySelector('#texto-tarefa');
 const addButton = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
 const clearButton = document.querySelector('#apaga-tudo');
+const saveButton = document.querySelector('#salvar-tarefas');
 const completedButton = document.querySelector('#remover-finalizados');
 
 /* -----Requisito 5 e 6----- */
@@ -65,3 +66,16 @@ function clearCompleted() {
 completedButton.addEventListener('click', clearCompleted);
 
 /* -----Requisito 12----- */
+function saveTasks() {
+  localStorage.setItem('tasks', taskList.innerHTML);
+}
+
+saveButton.addEventListener('click', saveTasks);
+
+function recoverSavedTasks() {
+  taskList.innerHTML = localStorage.getItem('tasks'); 
+}
+
+window.onload = function () {
+  recoverSavedTasks();
+};
