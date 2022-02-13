@@ -4,12 +4,19 @@
 
 Projeto feito de forma individual durante o curso da [Trybe](https://www.betrybe.com/) com o objetivo de implementar uma Lista de Tarefas e salva-la dentro do LocalStorage.
 
-## 🔧 Funçoes
+## ⭐ Habilidades
 
 - Utilizar as habilidades de Javascript, CSS e HTML.
 - Utilizar o LocalStorage para o armazenamento de informações.
 
-## Como iniciar
+## 🔧 Funçoes
+
+- Criar uma lista de tarefas
+- Riscar itens da lista
+- Apagar itens da lista
+- Salvar itens da lista ao recarregar a página
+
+## 💻 Como iniciar
 
 1. Faça o clone do projeto
 2. Entre no Visual Studio Code
